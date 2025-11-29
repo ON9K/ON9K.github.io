@@ -13,7 +13,61 @@
         <pubDate>Fri, 28 Nov 2025 17:37:03 +0800</pubDate>
         
         <guid>https://ON9K.github.io/p/new/</guid>
-        <description></description>
+        <description>&lt;h1 id=&#34;hackmymv_buster&#34;&gt;hackmymv_buster
+&lt;/h1&gt;&lt;p&gt;难度：easy&lt;/p&gt;
+&lt;p&gt;目标IP：10.0.2.11&lt;/p&gt;
+&lt;p&gt;本机ip：10.0.2.15&lt;/p&gt;
+&lt;h1 id=&#34;1信息收集&#34;&gt;1.信息收集
+&lt;/h1&gt;&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;扫描目标开开放端口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# nmap 10.0.2.11
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Starting Nmap 7.95 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; at 2025-11-29 11:00 EST
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Nmap scan report &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; 10.0.2.11
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Host is up &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.00056s latency&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Not shown: &lt;span class=&#34;m&#34;&gt;998&lt;/span&gt; closed tcp ports &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;reset&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PORT   STATE SERVICE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;22/tcp open  ssh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;80/tcp open  http
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MAC Address: 08:00:27:96:A0:1B &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;PCS Systemtechnik/Oracle VirtualBox virtual NIC&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Nmap &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;: &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; IP address &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; host up&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; scanned in 0.22 seconds
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;发现开放22端口与80端口&lt;/p&gt;
+&lt;p&gt;去80端口看看网页&lt;/p&gt;
+&lt;h1 id=&#34;2网页踩点&#34;&gt;2.网页踩点
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://ON9K.github.io/p/new/index.assets/image-20251130000548754.png&#34;
+	width=&#34;2553&#34;
+	height=&#34;915&#34;
+	srcset=&#34;https://ON9K.github.io/p/new/index.assets/image-20251130000548754_hu_874f3f701b301aa.png 480w, https://ON9K.github.io/p/new/index.assets/image-20251130000548754_hu_7934b033c91a83da.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20251130000548754&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;279&#34;
+		data-flex-basis=&#34;669px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;发现是个wordpress，果断使用wpscan扫描&lt;/p&gt;
+</description>
         </item>
         
     </channel>
