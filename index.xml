@@ -13,7 +13,7 @@
         <pubDate>Sun, 30 Nov 2025 15:52:52 +0800</pubDate>
         
         <guid>https://ON9K.github.io/p/buster/</guid>
-        <description>&lt;h1 id=&#34;hackmymv_buster&#34;&gt;hackmymv_buster
+        <description>&lt;img src="https://ON9K.github.io/p/buster/buster.png" alt="Featured image of post Buster" /&gt;&lt;h1 id=&#34;hackmymv_buster&#34;&gt;hackmymv_buster
 &lt;/h1&gt;&lt;p&gt;难度：easy&lt;/p&gt;
 &lt;p&gt;目标IP：10.0.2.11&lt;/p&gt;
 &lt;p&gt;本机ip：10.0.2.15&lt;/p&gt;
@@ -75,7 +75,7 @@
         <pubDate>Sun, 30 Nov 2025 15:44:44 +0800</pubDate>
         
         <guid>https://ON9K.github.io/p/nexus/</guid>
-        <description></description>
+        <description>&lt;img src="https://ON9K.github.io/p/nexus/nexus.png" alt="Featured image of post Nexus" /&gt;</description>
         </item>
         <item>
         <title>归档</title>
@@ -91,7 +91,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ON9K.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;This is a test page for i18n support.&lt;/p&gt;
+        <description>&lt;p&gt;此网站用于记录学习笔记&lt;/p&gt;
 </description>
         </item>
         <item>
