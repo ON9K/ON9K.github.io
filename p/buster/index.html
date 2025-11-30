@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ON9K.github.io/p/buster/'>
 
-<link rel="stylesheet" href="/scss/style.min.c2a50ab0dd2456493a91736a99b09c5bcc0208c35688e5980befc18fe2fc8b49.css"><meta property='og:title' content="Buster">
+<link rel="stylesheet" href="/scss/style.min.8d614abf59ba95b6e4bfd3186bdc95329d30599efc02a732011edc78907ee958.css"><meta property='og:title' content="Buster">
 <meta property='og:description' content="hackmymv_buster 难度：easy\n目标IP：10.0.2.11\n本机ip：10.0.2.15\n信息收集 nmap扫描目标开开放端口\n1 2 3 4 5 6 7 8 9 10 11 12 ┌──(root㉿kali)-[~] └─# nmap 10.0.2.11 Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-29 11:00 EST Nmap scan report for 10.0.2.11 Host is up (0.00056s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE 22/tcp open ssh 80/tcp open http MAC Address: 08:00:27:96:A0:1B (PCS Systemtechnik/Oracle VirtualBox virtual NIC) Nmap done: 1 IP address (1 host up) scanned in 0.22 seconds 发现开放22端口与80端口,去80端口看看网页\n">
 <meta property='og:url' content='https://ON9K.github.io/p/buster/'>
 <meta property='og:site_name' content='ON9K'>
@@ -263,7 +263,12 @@
     <li><a href="#信息收集">信息收集</a></li>
     <li><a href="#网页踩点">网页踩点</a>
       <ol>
-        <li><a href="#发现漏洞">发现漏洞</a></li>
+        <li><a href="#发现漏洞">发现漏洞</a>
+          <ol>
+            <li><a href="#发现插件">发现插件</a></li>
+            <li><a href="#发现用户">发现用户</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -342,7 +347,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -409,9 +414,273 @@
 		data-flex-basis="669px"
 	
 ></p>
-<p>发现是个wordpress，果断使用wpscan扫描</p>
+<p>发现是个wordpress，果断使用wpscan扫描爆破用户名和可能存在的插件漏洞。</p>
+<p>执行命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wpscan --url http://10.0.2.11 -e u,ap --plugins-detection aggressive 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# wpscan --url http://10.0.2.11 -e u,ap --plugins-detection aggressive 
+</span></span><span class="line"><span class="cl">_______________________________________________________________
+</span></span><span class="line"><span class="cl">         __          _______   _____
+</span></span><span class="line"><span class="cl">         <span class="se">\ \ </span>       / /  __ <span class="se">\ </span>/ ____<span class="p">|</span>
+</span></span><span class="line"><span class="cl">          <span class="se">\ \ </span> /<span class="se">\ </span> / /<span class="p">|</span> <span class="p">|</span>__<span class="o">)</span> <span class="p">|</span> <span class="o">(</span>___   ___  __ _ _ __ ®
+</span></span><span class="line"><span class="cl">           <span class="se">\ \/</span>  <span class="se">\/</span> / <span class="p">|</span>  ___/ <span class="se">\_</span>__ <span class="se">\ </span>/ __<span class="p">|</span>/ _<span class="sb">`</span> <span class="p">|</span> <span class="s1">&#39;_ \
+</span></span></span><span class="line"><span class="cl"><span class="s1">            \  /\  /  | |     ____) | (__| (_| | | | |
+</span></span></span><span class="line"><span class="cl"><span class="s1">             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">         WordPress Security Scanner by the WPScan Team
+</span></span></span><span class="line"><span class="cl"><span class="s1">                         Version 3.8.28
+</span></span></span><span class="line"><span class="cl"><span class="s1">       Sponsored by Automattic - https://automattic.com/
+</span></span></span><span class="line"><span class="cl"><span class="s1">       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+</span></span></span><span class="line"><span class="cl"><span class="s1">_______________________________________________________________
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[i] It seems like you have not updated the database for some time.
+</span></span></span><span class="line"><span class="cl"><span class="s1"> 
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] URL: http://10.0.2.11/ [10.0.2.11]
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] Started: Sun Nov 30 10:24:42 2025
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Interesting Finding(s):
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] Headers
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Interesting Entry: Server: nginx/1.14.2
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Headers (Passive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Confidence: 100%
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] robots.txt found: http://10.0.2.11/robots.txt
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Interesting Entries:
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - /wp-admin/
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - /wp-admin/admin-ajax.php
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Robots Txt (Aggressive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Confidence: 100%
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] XML-RPC seems to be enabled: http://10.0.2.11/xmlrpc.php
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Confidence: 100%
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | References:
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] WordPress readme found: http://10.0.2.11/readme.html
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Confidence: 100%
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] The external WP-Cron seems to be enabled: http://10.0.2.11/wp-cron.php
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Confidence: 60%
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | References:
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://www.iplocation.net/defend-wordpress-from-ddos
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - https://github.com/wpscanteam/wpscan/issues/1299
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">[+] WordPress version 6.7.1 identified (Insecure, released on 2024-11-21).
+</span></span></span><span class="line"><span class="cl"><span class="s1"> | Found By: Meta Generator (Passive Detection)
+</span></span></span><span class="line"><span class="cl"><span class="s1"> |  - http://10.0.2.11/, Match: &#39;</span>WordPress 6.7.1<span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Confirmed By: Rss Generator <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/feed/, &lt;generator&gt;https://wordpress.org/?v<span class="o">=</span>6.7.1&lt;/generator&gt;
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/comments/feed/, &lt;generator&gt;https://wordpress.org/?v<span class="o">=</span>6.7.1&lt;/generator&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>i<span class="o">]</span> The main theme could not be detected.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Enumerating All Plugins <span class="o">(</span>via Aggressive Methods<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>扫描速度偏慢&hellip;&hellip;</p>
 <h3 id="发现漏洞">发现漏洞
-</h3>
+</h3><h4 id="发现插件">发现插件
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>i<span class="o">]</span> Plugin<span class="o">(</span>s<span class="o">)</span> Identified:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> akismet
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Location: http://10.0.2.11/wp-content/plugins/akismet/
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Last Updated: 2025-11-12T16:31:00.000Z
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Readme: http://10.0.2.11/wp-content/plugins/akismet/readme.txt
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> <span class="o">[</span>!<span class="o">]</span> The version is out of date, the latest version is 5.6
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Known Locations <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/akismet/, status: <span class="m">200</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Version: 5.3.5 <span class="o">(</span>100% confidence<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Readme - Stable Tag <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/akismet/readme.txt
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Confirmed By: Readme - ChangeLog Section <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/akismet/readme.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> feed
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Location: http://10.0.2.11/wp-content/plugins/feed/
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Known Locations <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/feed/, status: <span class="m">200</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> The version could not be determined.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> wp-query-console
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Location: http://10.0.2.11/wp-content/plugins/wp-query-console/
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Latest Version: 1.0 <span class="o">(</span>up to date<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Last Updated: 2018-03-16T16:03:00.000Z
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Readme: http://10.0.2.11/wp-content/plugins/wp-query-console/README.txt
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Known Locations <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/wp-query-console/, status: <span class="m">403</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Version: 1.0 <span class="o">(</span>80% confidence<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Readme - Stable Tag <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-content/plugins/wp-query-console/README.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="发现用户">发现用户
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>i<span class="o">]</span> User<span class="o">(</span>s<span class="o">)</span> Identified:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> ta0
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Wp Json Api <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  - http://10.0.2.11/wp-json/wp/v2/users/?per_page<span class="o">=</span>100<span class="p">&amp;</span><span class="nv">page</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Confirmed By:
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  Rss Generator <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  Author Id Brute Forcing - Author Pattern <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span>  Login Error Messages <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> welcome
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Found By: Author Id Brute Forcing - Author Pattern <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">|</span> Confirmed By: Login Error Messages <span class="o">(</span>Aggressive Detection<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
