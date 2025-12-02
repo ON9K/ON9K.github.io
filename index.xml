@@ -490,7 +490,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;www-data@listen:~/html/wordpress$ 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;发现存在wp-config.php为配置文件，查看该文件&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;爆破密码&#34;&gt;爆破密码
+&lt;/h3&gt;&lt;p&gt;发现存在wp-config.php为配置文件，查看该文件&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ON9K.github.io/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f.png&#34;
 	width=&#34;1005&#34;
 	height=&#34;255&#34;
@@ -611,7 +612,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;成功登陆&lt;strong&gt;welcome&lt;/strong&gt;获得&lt;strong&gt;user.txt&lt;/strong&gt;，继续尝试提权获得root权限&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;gobuster提权&#34;&gt;gobuster提权
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -846,7 +848,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ON9K.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;此网站用于记录学习笔记&lt;/p&gt;
+        <description>&lt;p&gt;此网站用于记录学习笔记，刚开始建站有很多问题，敬请谅解&lt;/p&gt;
 </description>
         </item>
         <item>

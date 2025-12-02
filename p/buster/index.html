@@ -272,7 +272,12 @@
         <li><a href="#利用漏洞">利用漏洞</a></li>
       </ol>
     </li>
-    <li><a href="#提权">提权</a></li>
+    <li><a href="#提权">提权</a>
+      <ol>
+        <li><a href="#爆破密码">爆破密码</a></li>
+        <li><a href="#gobuster提权">gobuster提权</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -841,7 +846,8 @@
 </span></span><span class="line"><span class="cl">www-data@listen:~/html/wordpress$ 
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>发现存在wp-config.php为配置文件，查看该文件</p>
+</div><h3 id="爆破密码">爆破密码
+</h3><p>发现存在wp-config.php为配置文件，查看该文件</p>
 <p><img src="/p/buster/index.assets/ce6b58b1-29aa-49bb-823c-f8131b85d28f.png"
 	width="1005"
 	height="255"
@@ -962,7 +968,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>成功登陆<strong>welcome</strong>获得<strong>user.txt</strong>，继续尝试提权获得root权限</p>
-<div class="highlight"><div class="chroma">
+<h3 id="gobuster提权">gobuster提权
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
